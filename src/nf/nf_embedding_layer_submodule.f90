@@ -43,12 +43,10 @@ contains
     do concurrent(i = 1: self % sequence_length)
       index = input(i)
       if (index > size(self % weights, 1)) then
-        index = 1
-      elseif (index == 0) then
-        index = 1
+        index = 0
       end if
 
-      self % output(i, :) = self % weights(index, :)
+      self % output(i, :) = self % weights(index+1, :)
 
       if (self % positional == TRIGONOMETRIC) then
         call self % positional_trigonometric(i)
